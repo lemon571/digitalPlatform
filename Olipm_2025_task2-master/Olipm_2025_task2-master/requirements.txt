@@ -1,0 +1,6 @@
+flask~=3.1.0
+flask_sqlalchemy
+psycopg2-binary
+flasgger
+
+Werkzeug~=3.1.3

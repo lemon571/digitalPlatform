@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/education_db
+    volumes:
+      - .:/app
+  db:
+    image: postgres:16
+    container_name: pg
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: education_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5555:5432"
+
+volumes:
+  pgdata:
